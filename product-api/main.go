@@ -5,7 +5,7 @@
 // 	"net/http"
 // 	"os"
 
-// 	"github.com/maheshlode/learning_go/handlers"
+// 	"github.com/maheshlode/product-api/handlers"
 // )
 
 // func main() {
@@ -41,18 +41,21 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/maheshlode/learning_go/handlers"
+	"github.com/maheshlode/product-api/handlers"
+	// "github.com/maheshlode/product-api/handlers"
 )
 
 func main() {
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
 
-	hh := handlers.NewHello(l)
-	gh := handlers.NewGoodBye(l)
+	// hh := handlers.NewHello(l)
+	// gh := handlers.NewGoodBye(l)
+	ph := handlers.NewProducts(l)
 
 	sm := http.NewServeMux()
-	sm.Handle("/", hh)
-	sm.Handle("/goodbye", gh)
+	// sm.Handle("/", hh)
+	// sm.Handle("/goodbye", gh)
+	sm.Handle("/", ph)
 
 	s := &http.Server{
 		Addr:         ":8080",
